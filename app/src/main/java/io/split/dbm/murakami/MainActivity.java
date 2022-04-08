@@ -12,12 +12,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.mparticle.MPEvent;
+import com.mparticle.MParticle;
+import com.mparticle.MParticleOptions;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Map;
 
 import io.split.android.client.SplitClient;
 import io.split.android.client.SplitClientConfig;
@@ -37,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        MParticleOptions options = MParticleOptions.builder(this)
+                .credentials("us1-7a65afd42079f549948419d409792db2", "5ZE3YQJ3m-a9FF3u81vT3l8kvjiJrJtn6dxLTqDT8zxBQYZCMor0rHTTgE7aPaE_")
+                .build();
+        MParticle.start(options);
 
         String apiKey = "69haia9b9pf3b0rs951bj8kuufr4ke2987op";
 
@@ -80,16 +90,28 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Log.i(TAG, "next");
                         SplitResult result = split.getTreatmentWithConfig("murakami", new HashMap());
+                        String url = "";
                         try {
                             JSONObject configs = new JSONObject(result.config());
                             JSONArray urls = configs.getJSONArray("images");
-                            new DownloadImageFromInternet((ImageView) findViewById(R.id.image_view)).execute(urls.getString(count++ % urls.length()));
+                            url = urls.getString(count++ % urls.length());
+                            new DownloadImageFromInternet((ImageView) findViewById(R.id.image_view)).execute(url);
                             Log.i(TAG, "found " + urls.length() + " images");
                             Log.i(TAG, "urls[0]: " + urls.getString(0));
                         } catch (JSONException e) {
                             Log.e(TAG, "error with dynamic config: " + e.getMessage());
                         }
 
+                        Map<String, String> customAttributes = new HashMap<String, String>();
+                        customAttributes.put("category", "murakami");
+                        customAttributes.put("title", "pets");
+                        customAttributes.put("url", url);
+
+                        MPEvent event = new MPEvent.Builder(result.treatment() + " Watched", MParticle.EventType.Navigation)
+                                .customAttributes(customAttributes)
+                                .build();
+
+                        MParticle.getInstance().logEvent(event);
                     }
                 });
     }
