@@ -85,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+            split.on(SplitEvent.SDK_UPDATE, new SplitEventTask() {
+                @Override
+                public void onPostExecution(SplitClient client) {
+                    Log.i(TAG, "update");
+                    getAndDrawUrl();
+                }
+            });
+
         } catch(Exception e) {
             Log.e(TAG, e.getMessage());
         }
@@ -143,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
         public DownloadImageFromInternet(ImageView imageView) {
             Log.i(TAG, "constructor DownloadImageFromInternet");
             this.imageView=imageView;
-//            Toast.makeText(getApplicationContext(), "Please wait, it may take a few minute...", Toast.LENGTH_SHORT).show();
         }
         protected Bitmap doInBackground(String... urls) {
             String imageURL=urls[0];
