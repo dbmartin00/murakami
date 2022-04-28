@@ -40,6 +40,9 @@ dependencies {
     implementation 'io.split.client:android-client:2.10.0'
     implementation 'org.json:json:20090211'
 
+    // For Quantum Metric
+    implementation fileTree(dir: 'libs', include: ['quantum*.aar'])
+
     // For mParticle
     implementation 'com.mparticle:android-core:5+'
     implementation 'com.google.android.gms:play-services-ads-identifier:16.0.0'
