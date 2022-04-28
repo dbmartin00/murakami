@@ -36,4 +36,33 @@ QuantumMetric.sendEvent(3, impressionSummary, EventType.Encrypted);
 
 You may need to update the code to reflect you integer event code.
 
+You can recreate the "murakami" split easily with two treatments.
+
+"tea" has JSON config:
+
+```
+{ 
+  "images" : [
+    "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+    "https://images.unsplash.com/photo-1531969179221-3946e6b5a5e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3264&q=80",
+    "https://images.unsplash.com/photo-1504382103100-db7e92322d39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2686&q=80"
+    ]
+}
+```
+
+"coffee" has JSON config:
+
+```
+{ 
+  "images" : [
+    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+    "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80",
+    "https://images.unsplash.com/photo-1522992319-0365e5f11656?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80"
+    ]
+}
+```
+
+These images are borrowed from a public site, so there's a chance the URLs will black.  In that case, substitute your own image URLs.
+
+
 David.Martin@split.io
