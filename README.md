@@ -62,7 +62,7 @@ You can recreate the "murakami" split easily with two treatments.
 }
 ```
 
-These images are borrowed from a public site, so there's a chance the URLs will black.  In that case, substitute your own image URLs.
+These images are borrowed from a public site, so there's a chance the URLs will break.  In that case, substitute your own image URLs.
 
 
 David.Martin@split.io
