@@ -34,6 +34,6 @@ Quantum Metric also needs to create a custom event, e.g. "Split Android Test", t
 QuantumMetric.sendEvent(3, impressionSummary, EventType.Encrypted);
 ```
 
-You may need to update the code.
+You may need to update the code to reflect you integer event code.
 
 David.Martin@split.io
